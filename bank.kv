@@ -1,0 +1,60 @@
+
+BankWidget: #これがroot(メインウインドウ)
+
+<BankWidget>:  #BankWidgetに表示する子widgetを定義
+    BoxLayout:
+        orientation: 'vertical'
+        size: root.size #メインウインドウと同じ大きさ
+
+        Label:
+            text: "口座名義人 : " + root.ac_name
+            size_hint_y: 1
+        Label:
+            text: "残高 : " + str(root.ac_balance)
+            size_hint_y: 1
+        Label:
+            text: "状態 : " + root.state
+            size_hint_y: 1
+
+
+        BoxLayout:
+            size_hint_y: 0.2
+            orientation: 'horizontal'
+            Label: 
+                text: "氏名"
+                size_hint_x:0.1
+            TextInput:
+                id: owner_name
+                size_hint_x:0.4
+            Label:
+                text: "暗証番号"
+                size_hint_x:0.1
+            TextInput:
+                id: pin
+                size_hint_x:0.4
+
+            Button:
+                text: "取引開始"
+                size_hint_x:0.1
+                on_press: root.onStartTransaction()
+        
+        BoxLayout:
+            size_hint_y: 0.2
+            orientation: 'horizontal'
+            Label: 
+                text: "金額"
+                size_hint_x:0.1
+            DigitInput:
+                id: amount
+                size_hint_x:0.4
+
+            Button:
+                text: "引き出し"
+                size_hint_x:0.1
+                on_press: root.onWithdraw()
+        
+            Button:
+                text: "預け入れ"
+                size_hint_x:0.1
+                on_press: root.onDeposit()
+        
