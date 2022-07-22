@@ -34,5 +34,10 @@ class View:
         self.account = account
 
     def show(self):
-        self.widget.show(self.account.name, self.account.balance, self.bank.state)
+        if self.account:
+            self.widget.show(self.account.name, self.account.balance, self.bank.state)
+        else:
+            self.widget.show("error", 0, self.bank.state)
+
+
 
